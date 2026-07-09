@@ -1,0 +1,12 @@
+.icon_container {
+  align-items: center;
+  background-color: var(--bg-icon-container);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  height: 55px;
+  width: 55px;
+}
+.icon_centered {
+  margin: 0 auto;
+}

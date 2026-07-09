@@ -1,0 +1,18 @@
+.footer_container{
+    margin: 50px auto;
+    text-align: center !important;
+}
+.footer_row{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.footer_icons_links{
+    margin: 0 15px;
+}
+
+@media screen {
+    .footer_container p{
+        text-align: center;
+    }
+}

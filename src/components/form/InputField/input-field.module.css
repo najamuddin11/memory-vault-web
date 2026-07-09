@@ -1,0 +1,19 @@
+.input_field {
+  /* background-color: var(--text-primary); */
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  border-radius: 8px;
+  color: var(--text-alternative);
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 500;
+  height: 50px;
+  line-height: 17px;
+  /* margin-bottom: 16px; */
+  outline: none;
+  padding: 16px 24px;
+  width: calc(100%);
+  /* border: 1px solid red; */
+}
+.input_field_error {
+  border: 1px solid #dc4c64;
+}

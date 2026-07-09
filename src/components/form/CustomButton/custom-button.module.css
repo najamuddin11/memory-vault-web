@@ -1,0 +1,21 @@
+.custom_button {
+  background-color: var(--side-theme-color);
+  border: none;
+  border-radius: 8px;
+  color: var(--light-purple);
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 500;
+  height: 50px;
+  line-height: 17px;
+  margin-top: 50px;
+  width: calc(100%);
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom_button:hover {
+  transform: translateY(-5px);
+}

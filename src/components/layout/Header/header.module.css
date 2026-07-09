@@ -1,0 +1,93 @@
+.header {
+  height: 100vh;
+  min-height: 768px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.secondary_header {
+  height: 50vh;
+  min-height: 450px;
+  position: relative;
+  overflow: hidden;
+}
+.header_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_leftCol,
+.header_rightCol {
+  width: 50%;
+}
+.header_leftCol {
+  padding-right: 48px;
+}
+.header_rightCol {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+/* .header_rightColImg_wrapper {
+  position: absolute;
+  width: 341px;
+  height: 398px;
+  border-radius: 16px;
+
+  background-color: var(--light-purple);
+} */
+.header_rightColImg_wrapper {
+  width: min(75vw, 341px);
+  height: min(90vw, 398px);
+  border-radius: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--light-purple);
+  transition: rotate(0deg);
+  position: relative;
+  z-index: 111;
+}
+.header_rightColImg_bg {
+  content: "";
+  position: absolute;
+  width: min(75vw, 341px);
+  height: min(90vw, 398px);
+  border-radius: 16px;
+  z-index: 0;
+  transform: rotate(-10deg);
+  background: var(--side-theme-color);
+  animation-name: rotate_purple_card;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  z-index: 111;
+}
+
+@keyframes rotate_purple_card {
+  0% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@media screen and (max-width: 767px) {
+  .header_container {
+    flex-direction: column;
+    padding-top: 20vw;
+  }
+
+  .header_leftCol,
+  .header_rightCol {
+    width: 100%;
+    margin: 25px 0;
+    padding: 0;
+  }
+}

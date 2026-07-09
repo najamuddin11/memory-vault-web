@@ -1,0 +1,72 @@
+.clip {
+  background-color: var(--box-background);
+  border: 1px solid var(--box-background);
+  border-radius: 4px;
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 15px 10px 0 0;
+}
+
+.clip_text {
+  color: var(--box-text);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 25px;
+  margin: 0;
+}
+
+.clip:hover {
+  background-color: var(--box-text);
+}
+.clip:hover .clip_text {
+  color: var(--box-background);
+}
+.skills_hover {
+  position: relative;
+}
+.skills_container {
+  border-radius: 4px;
+  background-color: var(--box-background);
+  display: none;
+  position: absolute;
+  padding: 20px;
+  z-index: 1;
+  width: 200px;
+}
+.skill_icon {
+  height: 30px;
+  width: 30px;
+}
+.skills_container {
+  color: var(--box-text);
+}
+.skills_container p {
+  color: var(--box-text);
+  font-weight: 500;
+  margin: 0;
+}
+.skills_hover:hover .skills_container {
+  display: block;
+}
+.clip_icon {
+  width: 20px;
+  margin-left: 10px;
+}
+.clip_inner_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 1023px) {
+  .skills_container {
+    display: block;
+  }
+  .clip {
+    display: flex;
+  }
+}
+@media screen and (max-width: 767px) {
+  .clip {
+    padding: 0 5px;
+  }
+}

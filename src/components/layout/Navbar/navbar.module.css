@@ -1,0 +1,222 @@
+.navbar {
+  height: 80px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  transition: 0.3s;
+  z-index: 999;
+}
+.nav {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: inherit;
+  justify-content: space-between;
+}
+.last_nav {
+  display: flex;
+  align-items: center;
+  margin-left: 70px;
+}
+.inner_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.theme_toggler {
+  margin-right: 35px;
+  transition: all 0.3s ease-in-out;
+  transform: rotate(360deg);
+}
+.nav_anchor {
+  color: var(--text-primary);
+  text-decoration: none;
+  position: relative;
+  padding-right: 5px;
+}
+
+.nav_links::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: -5px;
+  width: 100%;
+  transition: 0.3s;
+  background: var(--text-primary);
+
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+.nav_links:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.nav_icon {
+  width: 18px;
+  height: 18px;
+  margin: 0 8px;
+}
+
+.nav_items_container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 60px;
+  width: 300px;
+}
+.brand {
+  display: flex;
+  z-index: 11;
+}
+.resume_btn {
+  background: var(--bg-primary);
+  outline: 0;
+  border: 1px solid var(--text-primary);
+  color: var(--text-primary);
+  border-radius: 5px;
+  transition: 0.2s;
+  overflow: hidden;
+  position: relative;
+}
+
+.resume_btn::after {
+  --gradient-size: 250px;
+
+  content: "";
+  position: absolute;
+  /* substracting half the size to center gradient with cursor. */
+  top: calc(var(--y-cursor-position, 0) * 1px - var(--gradient-size) / 2);
+  left: calc(var(--x-cursor-position, 0) * 1px - var(--gradient-size) / 2);
+  height: var(--gradient-size);
+  width: var(--gradient-size);
+  background: radial-gradient(var(--side-theme-color), var(--bg-secondary) 70%);
+  opacity: 0;
+  transition: opacity 700ms;
+}
+
+.resume_btn:hover::after {
+  opacity: 0.4;
+}
+/* .resume_btn:hover {
+  background-color: var(--side-theme-color);
+  border: 1px solid var(--side-theme-color);
+  color: var(--light-purple);
+} */
+.follow_links {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 50px;
+}
+.hamburger_menu {
+  display: none;
+}
+.nav_head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -30px;
+  margin-bottom: 20px;
+}
+.close_nav {
+  font-size: 35px;
+  /* position: absolute;
+  top: 10px;
+  right: 20px; */
+  color: var(--text-primary);
+}
+.mobile_menu_container {
+  background-color: var(--bg-secondary);
+  height: 300px;
+  position: fixed;
+  top: 0px;
+  right: 0;
+  padding: 70px 30px;
+  width: 100%;
+  animation-name: animate_mobile_open;
+  animation-duration: 0.3s;
+  height: 100vh;
+  z-index: 99;
+}
+
+@keyframes animate_mobile_open {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.splitter {
+  border-top: 1px solid var(--text-secondary);
+  margin: 20px 0;
+}
+.follow_links_mobile {
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+}
+.follow_links_mobile > div {
+  margin: 0 5px;
+}
+.nav_dropdown {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+@media screen and (max-width: 1023px) {
+  .nav_items_container {
+    width: 250px;
+  }
+  .nav_items_container {
+    display: none;
+  }
+  .last_nav {
+    display: none;
+  }
+  .follow_links {
+    display: none;
+  }
+  .hamburger_menu {
+    display: block;
+  }
+  .nav_anchor {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 0;
+  }
+  .nav_link_icon {
+    margin-right: 20px;
+  }
+  .resume_btn {
+    width: calc(100%);
+  }
+  .mobile_theme_toggle_container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .mobile_theme_toggle {
+    align-items: center;
+    background-color: var(--text-primary);
+    border-radius: 50px;
+    display: flex;
+    height: 25px;
+    width: 50px;
+  }
+  .theme_toggler {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+}

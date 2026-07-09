@@ -1,0 +1,145 @@
+.work_experience_container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.work_experience_title_container {
+  position: relative;
+}
+
+.work_experience_wrapper:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.work_experience_cal {
+  position: absolute;
+  height: 0;
+  background-color: var(--text-primary);
+  width: 3px;
+  left: 12px;
+  top: 3px;
+}
+.work_experience_title {
+  position: relative;
+  opacity: 0.1;
+  margin-inline-start: 45px;
+  transition: 0.3s;
+}
+.work_experience_company,
+.work_experience_role,
+.work_experience_duration {
+  margin: 0;
+  line-height: 20px;
+}
+.work_experience_company {
+  text-transform: uppercase;
+}
+.work_experience_title.work_experience_active {
+  opacity: 1;
+}
+
+.work_experience_title::before {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  width: 8px;
+  height: 8px;
+  background: var(--text-primary);
+  left: -34px;
+  top: 6px;
+  transition: 0.3s;
+}
+.work_experience_title.work_experience_active::before {
+  width: 15px;
+  height: 15px;
+  left: -39px;
+  top: 3px;
+}
+
+.work_experience_title_heading {
+  margin: 0px;
+  color: var(--box-text);
+}
+
+.work_experience_right_col :is(h3, p) {
+  padding: 0;
+  margin: 0;
+  line-height: 25px;
+}
+.work_experience_right_col {
+  margin-top: 80px;
+}
+.work_experience_right_col h3 span {
+  border-bottom: 1px solid var(--text-secondary);
+}
+.work_experience_content {
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 5px;
+}
+.clip_container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.work_experience_spliter {
+  border: 1px solid var(--text-secondary);
+  margin: 30px 0;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.list > li {
+  /* text-indent: -10px; */
+  position: relative;
+  font-family: "Plus Jakarta Sans";
+}
+.list > li:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: var(--text-secondary);
+  left: -25px;
+  top: 9px;
+}
+.whatIdidTitle {
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 1023px) {
+  .work_experience_container {
+    grid-template-columns: 1fr;
+  }
+  .work_experience_left_col {
+    width: calc(100%);
+  }
+  .work_experience_wrapper {
+    margin-bottom: 0;
+  }
+  .work_experience_right_col {
+    width: calc(100%);
+    margin-top: 0;
+  }
+
+  .work_experience_icon {
+    height: 20px;
+    width: 25px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .work_experience_title {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .list {
+    padding-inline-start: 0;
+  }
+}

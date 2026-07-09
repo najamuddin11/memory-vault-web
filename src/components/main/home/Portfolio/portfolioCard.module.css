@@ -1,0 +1,71 @@
+.portfolio_card_innerContainer {
+  position: relative;
+}
+.portfolio_card_title {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.portfolio_card_project_logo {
+  height: 40px;
+}
+.portfolio_card_skills_gallery_container {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+}
+
+.skills_clip_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.portfolio_card_gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two columns */
+  grid-template-rows: auto auto;
+  width: fit-content;
+  max-width: 750px;
+  gap: 8px;
+}
+.portfolio_card_gallery > div:first-child {
+  grid-column: span 2;
+}
+
+.portfolio_card_gallery img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.portfolio_card_innerContainer {
+  text-align: justify;
+}
+
+.portfolio_card_visitWebsite {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+.portfolio_card_visitWebsite_arrow {
+  transition: 0.3s;
+}
+
+.portfolio_card_visitWebsite:hover > .portfolio_card_visitWebsite_arrow {
+  padding-inline-start: 10px;
+}
+
+@media screen and (max-width: 1023px) {
+  .portfolio_card_skills_gallery_container {
+    grid-template-columns: 1fr;
+  }
+  .portfolio_card_visitWebsite {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .portfolio_card_title {
+    margin-bottom: 0;
+  }
+  .portfolio_card_project_logo {
+    max-height: 30px;
+  }
+}

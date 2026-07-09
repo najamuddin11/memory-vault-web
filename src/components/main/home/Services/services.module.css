@@ -1,0 +1,23 @@
+.service_section_container {
+  display: grid;
+}
+.service_card_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 100px;
+  justify-content: space-between;
+  gap: 20px;
+}
+@media screen and (max-width: 768px) {
+  .service_card_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    position: relative;
+  }
+
+  .service_card_container > * {
+    position: relative; /* restore normal flow */
+    width: 100%;
+  }
+}

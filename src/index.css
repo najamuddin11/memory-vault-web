@@ -1,0 +1,301 @@
+:root {
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #282828;
+  --text-primary: #f1f1f1;
+  --text-secondary: #b2b2b2;
+  --side-theme-color: #7e74f1;
+  --bg-navbar: #000000;
+  --light-purple: #eae6fe;
+  --bg-icon-container: #eae6fe;
+
+  --bg-popup: #4f4f4f;
+  --bg-card: #4f4f4f;
+
+  --bg-card-hover: #343434;
+
+  /* Clips and Boxes */
+
+  --box-background: #eae6fe;
+  --box-text: #7e74f1;
+
+  /* alternative: */
+  --bg-alternative: #4f4f4f;
+  --text-alternative: #656d72;
+
+  /* curson */
+  --color-cursor: 126, 116, 241;
+  --cursor-outline-shade: 0.25;
+  --cursor-size: 5px;
+  --cursor-outline-size: 40px;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Regular.woff);
+}
+
+/* @font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Medium.woff);
+  font-weight: ;
+} */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Bold.woff);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.woff);
+  font-weight: bolder;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Light.woff);
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(/assets/fonts/Inter/Inter-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(/assets/fonts/Inter/Inter-Medium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(/assets/fonts/Inter/Inter-ExtraBold.ttf);
+  font-weight: bolder;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(/assets/fonts/Inter/Inter-Thin.ttf);
+  font-weight: lighter;
+}
+#tsparticles {
+  position: absolute;
+}
+h1 {
+  font-family: "Plus Jakarta Sans";
+  color: var(--text-primary);
+  font-size: 44px;
+  line-height: 55px;
+  font-weight: bolder;
+}
+
+h2 {
+  color: var(--text-primary);
+  font-family: "Plus Jakarta Sans";
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 45px;
+}
+h2.color_static {
+  color: #f1f1f1;
+}
+
+h3 {
+  color: var(--text-primary);
+  font-family: "Plus Jakarta Sans";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 23px;
+}
+h3.color_static {
+  color: #f1f1f1;
+}
+
+h4 {
+  color: var(--text-primary);
+  font-family: "Plus Jakarta Sans";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+h4.color_static {
+  color: #f1f1f1;
+}
+
+section {
+  padding: 100px 0;
+  position: relative;
+}
+.text_center {
+  text-align: center;
+}
+section:nth-child(2n) {
+  background: var(--bg-secondary);
+}
+
+h5 {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 7.5px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+h5.color_static {
+  color: #b2b2b2;
+}
+.dashed {
+  position: relative;
+  margin-left: 35px;
+}
+.dashed::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background: var(--text-secondary);
+  left: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+h6 {
+  color: var(--text-secondary);
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+h6.color_static {
+  color: #b2b2b2;
+}
+
+p {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--text-primary);
+}
+p.color_static {
+  color: #b2b2b2;
+}
+
+button {
+  font-family: "Inter";
+  font-weight: 500;
+  height: 50px;
+  padding: 0 24px;
+  cursor: none;
+}
+
+html,
+body {
+  font-weight: 500;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter";
+  padding: 0;
+  margin: 0;
+  cursor: none;
+}
+
+.app {
+  background: var(--bg-primary);
+  height: 100%;
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+a {
+  cursor: none;
+}
+
+/* cursor */
+
+#cursor-dot,
+#cursor-dot-outline {
+  z-index: 999999999999999;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+button:hover ~ #cursor-dot-outline {
+  transform: scale(4);
+  display: none;
+}
+
+#cursor-dot {
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  background-color: rgba(var(--color-cursor), 1);
+}
+
+#cursor-dot-outline {
+  width: var(--cursor-outline-size);
+  height: var(--cursor-outline-size);
+  background-color: rgba(var(--color-cursor), var(--cursor-outline-shade));
+}
+
+.form-control {
+  position: relative;
+  margin: 25px 0;
+}
+
+@media screen and (max-width: 1559px) {
+  .container {
+    width: 1100px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .container {
+    width: calc(100% - 100px);
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  #cursor-dot,
+  #cursor-dot-outline {
+    display: none;
+  }
+  .d-desk {
+    display: none;
+  }
+  h1 {
+    font-size: 35px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 27px;
+    text-align: justify;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: calc(100% - 60px);
+  }
+}
