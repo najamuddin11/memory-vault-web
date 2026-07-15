@@ -46,7 +46,6 @@ const Home = () => {
       <ErrorState
         detail={error instanceof Error ? error.message : undefined}
         onRetry={() => refetch()}
-        showHomeLink={false}
       />
     );
   }

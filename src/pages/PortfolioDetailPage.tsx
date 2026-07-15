@@ -1,4 +1,4 @@
-import { memo, lazy, Suspense } from "react";
+import { memo, Suspense } from "react";
 import { useParams } from "react-router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
