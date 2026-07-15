@@ -100,6 +100,7 @@ const PortfolioCard: React.FC<PortfolioCardPropType> = (props) => {
                     aspectRatio="2.35 / 1"
                     className={styles.portfolio_card_gallery_thumb}
                     imgClassName={styles.portfolio_card_gallery_img}
+                    priority
                   />
                 </div>
               ))}

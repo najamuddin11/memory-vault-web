@@ -6,7 +6,7 @@ import ErrorState from "../components/general/ErrorState";
 
 const Header = lazy(() => import("../components/layout/Header"));
 const Services = lazy(() => import("../components/main/Services"));
-const Portfolio = lazy(() => import("../components/main/HomePortfolio"));
+const HomePortfolio = lazy(() => import("../components/main/HomePortfolio"));
 const WorkExperience = lazy(() => import("../components/main/WorkExperience"));
 const Education = lazy(() => import("../components/main/Education"));
 const Contact = lazy(() => import("../components/main/Contact"));
@@ -71,7 +71,7 @@ const Home = () => {
           />
 
           <Services services={homeData.serviceData} />
-          <Portfolio portfolio={homeData.portfolioData} />
+          <HomePortfolio portfolio={homeData.portfolioData} />
           <WorkExperience experience={homeData.workExperienceData} />
           <Education
             education={homeData.educationData}
