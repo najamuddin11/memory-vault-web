@@ -16,6 +16,7 @@
 .last_nav {
   display: flex;
   align-items: center;
+  gap: 40px;
   margin-left: 70px;
 }
 .inner_container {
@@ -25,7 +26,6 @@
   width: 100%;
 }
 .theme_toggler {
-  margin-right: 35px;
   transition: all 0.3s ease-in-out;
   transform: rotate(360deg);
 }
@@ -66,7 +66,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin-left: 60px;
-  width: 300px;
+  gap: 30px;
 }
 .brand {
   display: flex;
@@ -173,9 +173,6 @@
   position: relative;
 }
 @media screen and (max-width: 1023px) {
-  .nav_items_container {
-    width: 250px;
-  }
   .nav_items_container {
     display: none;
   }

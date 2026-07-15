@@ -1,0 +1,17 @@
+.portfolio_list_section_container {
+  display: grid;
+}
+
+.porfolios_card_container {
+  display: grid;
+  /* grid-template-columns is set inline (depends on breakpoint). Every
+     card gets an explicit grid-column/grid-row (computed in index.tsx),
+     so there's no auto-placement left for the browser to do - no
+     grid-auto-flow needed here. */
+  grid-auto-rows: clamp(120px, 14vw, 200px);
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: 0.3s;
+}

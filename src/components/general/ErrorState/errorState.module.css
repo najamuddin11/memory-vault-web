@@ -1,0 +1,113 @@
+.error_wrapper {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  padding: 160px 0 100px;
+}
+
+.error_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 560px;
+}
+
+.error_container h2 {
+  margin: 6px 0 16px;
+}
+
+.error_description {
+  max-width: 440px;
+}
+
+.error_detail {
+  font-family: monospace;
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: -10px;
+  word-break: break-word;
+}
+
+/* Rotated dual-card motif, matching the secondary Header's image treatment
+   so an error/404 still feels like part of this site, not a bolted-on
+   default screen. */
+.error_art {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 36px;
+}
+
+.error_art_bg {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: var(--side-theme-color);
+  transform: rotate(-10deg);
+  animation-name: error_art_rotate;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+}
+
+.error_art_card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background-color: var(--light-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error_art_glyph {
+  font-family: "Plus Jakarta Sans";
+  font-weight: bolder;
+  font-size: 48px;
+  color: var(--side-theme-color);
+}
+
+@keyframes error_art_rotate {
+  0% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+.error_retry_button {
+  width: auto;
+  min-width: 160px;
+  margin-top: 0;
+}
+
+.error_home_link {
+  display: flex;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+.error_home_link_arrow {
+  display: flex;
+  margin-left: 10px;
+  transition: 0.3s;
+  color: var(--text-primary);
+}
+
+.error_home_link:hover .error_home_link_arrow {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .error_wrapper {
+    padding: 120px 0 60px;
+  }
+}

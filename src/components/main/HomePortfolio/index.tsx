@@ -1,10 +1,10 @@
 import React, { memo, useCallback, useLayoutEffect, useRef } from "react";
 import styles from "./portfolio.module.css";
 import { Link } from "react-router";
-import type PortfolioDataType from "../../../../models/state-types/PortfolioDataType";
+import type PortfolioDataType from "../../../models/state-types/PortfolioDataType";
 import gsap from "gsap";
 import PortfolioCard from "./PortfolioCard";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 interface PortfolioPropType {
   portfolio: PortfolioDataType[] | undefined;
@@ -13,7 +13,7 @@ interface PortfolioPropType {
 // ~1 mouse-wheel notch / short trackpad swipe of scroll per timeline "unit".
 const PX_PER_UNIT = 140;
 
-const Portfolio: React.FC<PortfolioPropType> = (props) => {
+const HomePortfolio: React.FC<PortfolioPropType> = (props) => {
   const { portfolio } = props;
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -100,7 +100,7 @@ const Portfolio: React.FC<PortfolioPropType> = (props) => {
         const skillsEl = card.querySelector("[data-pf-skills]");
         const galleryImagesContainer = card.querySelector("[data-pf-gallery]");
         const galleryImages = card.querySelectorAll<HTMLDivElement>(
-          "[data-pf-gallery] div",
+          "[data-pf-gallery] > div",
         );
         const seeAllLinkText =
           containerRef2.current?.querySelector<HTMLDivElement>(
@@ -238,7 +238,7 @@ const Portfolio: React.FC<PortfolioPropType> = (props) => {
     <section
       id="portfolio"
       ref={sectionRef}
-      className={styles.portfolio_section}
+      className={`bg_primary ${styles.portfolio_section}`}
     >
       <div className="container" ref={containerRef1}>
         <div className={styles.portfolio_stepper_container}>
@@ -255,7 +255,7 @@ const Portfolio: React.FC<PortfolioPropType> = (props) => {
 
       <div className="container" ref={containerRef2}>
         <div className={styles.seeAll_link_container} ref={seeAllPortfolio}>
-          <Link to="/portfolio" className={styles.seeAll_link}>
+          <Link to="/portfolios" className={styles.seeAll_link}>
             <div id="seeAll_link_text">See all projects</div>
             <div className={styles.arrow_img_container}>
               <svg
@@ -290,4 +290,4 @@ const Portfolio: React.FC<PortfolioPropType> = (props) => {
   );
 };
 
-export default memo(Portfolio);
+export default memo(HomePortfolio);

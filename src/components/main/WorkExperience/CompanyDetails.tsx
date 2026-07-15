@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import styles from "./work-experience.module.css";
-import Clip from "../../../general/Clip";
-import type WorkExperienceDataType from "../../../../models/state-types/WorkExperienceDataType";
+import Clip from "../../general/Clip";
+import type WorkExperienceDataType from "../../../models/state-types/WorkExperienceDataType";
 
 interface CompanyDetailsPropType {
   item: WorkExperienceDataType | null;
@@ -13,7 +13,11 @@ const CompanyDetails: React.FC<CompanyDetailsPropType> = (props) => {
     <div className={`${styles.work_experience_right_col} `}>
       <h3 className="d-desk">
         {item?.designation}{" "}
-        <a href={item?.companySite ?? ""} target="_blank">
+        <a
+          href={item?.companySite ?? ""}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           @<span>{item?.company}</span>
         </a>
       </h3>

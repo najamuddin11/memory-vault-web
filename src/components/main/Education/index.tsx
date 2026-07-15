@@ -1,10 +1,10 @@
 import React, { useLayoutEffect, useRef } from "react";
 import styles from "./education.module.css";
-import Clip from "../../../general/Clip";
-import type EducationDataType from "../../../../models/state-types/EducationDataType";
-import type SkillsDataType from "../../../../models/state-types/SkillsDataType";
+import Clip from "../../general/Clip";
+import type EducationDataType from "../../../models/state-types/EducationDataType";
+import type SkillsDataType from "../../../models/state-types/SkillsDataType";
 import gsap from "gsap";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 interface EducationPropType {
   education?: EducationDataType[];
@@ -24,19 +24,19 @@ const Education: React.FC<EducationPropType> = (props) => {
   useLayoutEffect(() => {
     if (!containerRef.current) return;
     const heading1El = containerRef.current.querySelector(
-      "[data-edu-heading1]"
+      "[data-edu-heading1]",
     );
     const heading2El = containerRef.current.querySelector(
-      "[data-edu-heading2]"
+      "[data-edu-heading2]",
     );
     const calEl = containerRef.current.querySelector(
-      "[data-edu-cal]"
+      "[data-edu-cal]",
     ) as HTMLElement;
     const details = containerRef.current.querySelector(
-      "[data-edu-details]"
+      "[data-edu-details]",
     ) as HTMLElement;
     const skills = containerRef.current.querySelector(
-      "[data-edu-skills]"
+      "[data-edu-skills]",
     ) as HTMLElement;
     const ctx = gsap.context(() => {
       if (!isDesktop) {
@@ -68,7 +68,7 @@ const Education: React.FC<EducationPropType> = (props) => {
 
         education?.forEach((item, index) => {
           const companyNameEl = containerRef.current?.querySelector(
-            `[data-educationname-id="${item.id}"]`
+            `[data-educationname-id="${item.id}"]`,
           );
           if (companyNameEl) {
             if (index === 0) {
@@ -122,7 +122,6 @@ const Education: React.FC<EducationPropType> = (props) => {
           if (index === 0) return;
           // Calculate progress % based on index
           let progress = (index / (education.length - 1)) * 100;
-          console.log(progress);
           tl.to(
             calEl,
             {
@@ -130,7 +129,7 @@ const Education: React.FC<EducationPropType> = (props) => {
               duration: 0.6,
               ease: "none",
             },
-            `+=1.2`
+            `+=1.2`,
           ).to(
             {},
             {
@@ -139,7 +138,7 @@ const Education: React.FC<EducationPropType> = (props) => {
                 currentIndex = index;
                 if (education && education[currentIndex]) {
                   educationRefs.current[currentIndex]?.classList.add(
-                    styles.active
+                    styles.active,
                   );
                 }
               },
@@ -147,12 +146,12 @@ const Education: React.FC<EducationPropType> = (props) => {
                 currentIndex = index;
                 if (education && education[currentIndex]) {
                   educationRefs.current[currentIndex]?.classList.remove(
-                    styles.active
+                    styles.active,
                   );
                 }
               },
             },
-            "<" // run at the same time as height animation
+            "<", // run at the same time as height animation
           );
         });
       }
@@ -161,7 +160,11 @@ const Education: React.FC<EducationPropType> = (props) => {
     return () => ctx.revert();
   }, [education, windowWidth]);
   return (
-    <section id="education" ref={containerRef}>
+    <section
+      id="education"
+      ref={containerRef}
+      className="bg_secondary_gradient_effect"
+    >
       <div className="container">
         <h5 data-edu-heading1>learning path</h5>
         <h2 data-edu-heading2>Education & Skills</h2>

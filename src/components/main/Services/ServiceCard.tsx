@@ -1,6 +1,6 @@
 import styles from "./serviceCard.module.css";
-import Icon from "../../../general/Icon";
-import type ServiceDataType from "../../../../models/state-types/ServiceDataType";
+import Icon from "../../general/Icon";
+import type ServiceDataType from "../../../models/state-types/ServiceDataType";
 import { memo } from "react";
 
 interface ServiceCardPropType {

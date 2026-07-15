@@ -35,6 +35,17 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Passed as LazyImage's `className` (wrapper) - the aspect-ratio comes from
+   the aspectRatio prop, this just adds the gallery's own rounding so it
+   sits flush with the rest of the tiles. */
+.portfolio_card_gallery_thumb {
+  border-radius: 8px;
+}
+
+.portfolio_card_gallery_img {
+  border-radius: 8px;
+}
 .portfolio_card_innerContainer {
   text-align: justify;
 }

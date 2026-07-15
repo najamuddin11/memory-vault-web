@@ -1,40 +1,57 @@
 import { memo } from "react";
 import styles from "./header.module.css";
-import ParticleLayout from "../ParticleLayout";
-import type IntroDataType from "../../../models/state-types/IntroDataType";
 
 interface HeaderPropType {
-  intro?: IntroDataType;
+  eyebrow?: string;
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
+  img?: string;
+  secondary?: boolean;
 }
-const Header: React.FC<HeaderPropType> = ({ intro }) => {
+
+const Header: React.FC<HeaderPropType> = ({
+  eyebrow,
+  title,
+  titleHighlight,
+  description,
+  img,
+  secondary,
+}) => {
   return (
     <div className={styles.header_wrapper}>
-      <ParticleLayout>
-        <header
-          className={`${styles.header} container ${styles.header_container}`}
-        >
-          <div className={styles.header_leftCol}>
-            <h5>MY NAME IS</h5>
+      <header
+        className={`${
+          secondary ? styles.secondary_header : styles.header
+        } container ${styles.header_container}`}
+      >
+        <div className={styles.header_leftCol}>
+          <h5>{eyebrow}</h5>
+          {(title || titleHighlight) && (
             <h1>
-              {intro?.firstName}{" "}
+              {title}{" "}
               <span style={{ color: "var(--side-theme-color)" }}>
-                {intro?.lastName}
+                {titleHighlight}
               </span>
             </h1>
-            <p>{intro?.summary}</p>
-          </div>
+          )}
 
+          {description && <p>{description}</p>}
+        </div>
+        {!secondary ? (
           <div className={styles.header_rightCol}>
             <div className={styles.header_rightColImg_bg}></div>
             <div
               className={styles.header_rightColImg_wrapper}
               style={{
-                backgroundImage: `url(${import.meta.env.VITE_FILES_PATH}${intro?.img})`,
+                backgroundImage: `url(${import.meta.env.VITE_FILES_PATH}${img})`,
               }}
             ></div>
           </div>
-        </header>
-      </ParticleLayout>
+        ) : (
+          ""
+        )}
+      </header>
     </div>
   );
 };

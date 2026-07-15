@@ -8,17 +8,17 @@ import {
   type FormEvent,
 } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { sendContactMessage } from "../../../../api/homeApi";
-import CustomButton from "../../../form/CustomButton";
-import InputField from "../../../form/InputField";
-import TextArea from "../../../form/TextArea";
+import { sendContactMessage } from "../../../api/homeApi";
+import CustomButton from "../../form/CustomButton";
+import InputField from "../../form/InputField";
+import TextArea from "../../form/TextArea";
 import styles from "./contact.module.css";
 import ContactCard from "./ContactCard";
-import Loader from "../../../general/Loader";
-import type FormControlType from "../../../../models/component-types/FormControlType";
-import type ContactDataType from "../../../../models/state-types/ContactDataType";
-import type ValidationErrorType from "../../../../models/state-types/ValidationErrorType";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import Loader from "../../general/Loader";
+import type FormControlType from "../../../models/component-types/FormControlType";
+import type ContactDataType from "../../../models/state-types/ContactDataType";
+import type ValidationErrorType from "../../../models/state-types/ValidationErrorType";
+import useWindowSize from "../../../hooks/useWindowSize";
 import gsap from "gsap";
 
 export interface ContactPropsType {
@@ -143,7 +143,7 @@ const Contact: React.FC<ContactPropsType> = ({ contact }) => {
   }, [windowWidth]);
 
   return (
-    <section id="contact">
+    <section id="contact" className="bg_primary_gradient_effect">
       <div className="container" ref={containerRef}>
         <h5 data-contact-heading1>Contact me</h5>
         <h2 data-contact-heading2>Contact me</h2>

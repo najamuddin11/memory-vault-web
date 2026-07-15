@@ -7,9 +7,17 @@ import { loadSlim } from "@tsparticles/slim";
 
 interface ParticleLayoutPropType {
   children: React.ReactNode;
+  fixed?: boolean;
+  background?: string;
+  particlesColor?: string;
 }
 
-const ParticleLayout: React.FC<ParticleLayoutPropType> = ({ children }) => {
+const ParticleLayout: React.FC<ParticleLayoutPropType> = ({
+  fixed,
+  children,
+  background,
+  particlesColor,
+}) => {
   const [init, setInit] = useState(false);
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -20,8 +28,17 @@ const ParticleLayout: React.FC<ParticleLayoutPropType> = ({ children }) => {
   }, []);
   const options: IParticlesProps["options"] = useMemo(
     () => ({
-      fullScreen: { enable: false, zIndex: -1 },
+      fullScreen: {
+        enable: false,
+        zIndex: -1,
+      },
+      style: {
+        position: fixed ? "fixed" : "static",
+      },
       fpsLimit: 120,
+      background: {
+        color: background ? background : undefined,
+      },
       particles: {
         number: {
           value: 220,
@@ -30,12 +47,12 @@ const ParticleLayout: React.FC<ParticleLayoutPropType> = ({ children }) => {
           },
         },
         color: {
-          value: "#7E74F1",
+          value: particlesColor ? particlesColor : "#7E74F1",
         },
         opacity: {
           value: {
             min: 0.1,
-            max: 0.6,
+            max: 0.4,
           },
           animation: {
             enable: true,
@@ -57,7 +74,7 @@ const ParticleLayout: React.FC<ParticleLayoutPropType> = ({ children }) => {
         links: {
           enable: true,
           distance: 50,
-          color: "#7E74F1",
+          color: particlesColor ? particlesColor : "#7E74F1",
           opacity: 1,
           width: 1,
         },
@@ -101,7 +118,7 @@ const ParticleLayout: React.FC<ParticleLayoutPropType> = ({ children }) => {
       },
       detectRetina: true,
     }),
-    []
+    [],
   );
 
   return init ? (

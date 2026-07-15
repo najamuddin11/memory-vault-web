@@ -9,8 +9,8 @@ import styles from "./work-experience.module.css";
 import _ from "lodash";
 import CompanyName from "./CompanyName";
 import CompanyDetails from "./CompanyDetails";
-import useWindowSize from "../../../../hooks/useWindowSize";
-import type WorkExperienceDataType from "../../../../models/state-types/WorkExperienceDataType";
+import useWindowSize from "../../../hooks/useWindowSize";
+import type WorkExperienceDataType from "../../../models/state-types/WorkExperienceDataType";
 import gsap from "gsap";
 
 interface WorkExperiencePropType {
@@ -20,7 +20,7 @@ interface WorkExperiencePropType {
 const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
   const { experience } = props;
   const [activeItem, setActiveItem] = useState<WorkExperienceDataType | null>(
-    null
+    null,
   );
   const windowWidth = useWindowSize();
 
@@ -38,14 +38,14 @@ const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
     const heading1El = containerRef.current.querySelector("[data-we-heading1]");
     const heading2El = containerRef.current.querySelector("[data-we-heading2]");
     const companyNamesEl = containerRef.current.querySelector(
-      "[data-we-companynames]"
+      "[data-we-companynames]",
     );
     const companyDetailsEl = containerRef.current.querySelector(
-      "[data-we-companydetails]"
+      "[data-we-companydetails]",
     );
 
     const calEl = containerRef.current.querySelector(
-      "[data-we-cal]"
+      "[data-we-cal]",
     ) as HTMLElement;
 
     const ctx = gsap.context(() => {
@@ -68,7 +68,7 @@ const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
           .from(
             companyDetailsEl,
             { y: 50, opacity: 0, duration: 0.6 },
-            "-=0.4"
+            "-=0.4",
           );
 
         // Only add the scroll-triggered company changes on desktop
@@ -85,7 +85,7 @@ const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
               duration: 1,
               ease: "none",
             },
-            `+=1.2`
+            `+=1.2`,
           ).to(
             {},
             {
@@ -103,7 +103,7 @@ const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
                 }
               },
             },
-            "<" // run at the same time as height animation
+            "<", // run at the same time as height animation
           );
         });
       } else {
@@ -121,7 +121,7 @@ const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
           .from(
             companyDetailsEl,
             { y: 50, opacity: 0, duration: 0.6 },
-            "-=0.4"
+            "-=0.4",
           );
         // ELSE BLOCK: Progress bar increases with scroll progress but activeItem doesn't change automatically
 
@@ -139,7 +139,7 @@ const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
 
         experience.forEach((item) => {
           const companyNameEl = containerRef.current?.querySelector(
-            `[data-companyname-id="${item.id}"]`
+            `[data-companyname-id="${item.id}"]`,
           );
 
           if (companyNameEl) {
@@ -174,7 +174,7 @@ const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
       gsap.fromTo(
         companyDetailsEl,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1 }
+        { opacity: 1, y: 0, duration: 1 },
       );
     }, containerRef);
 
@@ -182,7 +182,7 @@ const WorkExperience: React.FC<WorkExperiencePropType> = (props) => {
   }, [activeItem]);
 
   return (
-    <section id="work">
+    <section id="work" className="bg_secondary_gradient_effect">
       <div className="container" ref={containerRef}>
         <div className={`${styles.work_experience_container}`}>
           <div className={`${styles.work_experience_left_col}`}>

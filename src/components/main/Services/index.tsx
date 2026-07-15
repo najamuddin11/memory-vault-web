@@ -1,9 +1,9 @@
 import React, { useLayoutEffect, useRef, useCallback, memo } from "react";
 import styles from "./services.module.css";
 import Card from "./ServiceCard";
-import type ServiceDataType from "../../../../models/state-types/ServiceDataType";
+import type ServiceDataType from "../../../models/state-types/ServiceDataType";
 import gsap from "gsap";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 interface ServicesPropType {
   services?: ServiceDataType[];
@@ -19,9 +19,9 @@ const Services: React.FC<ServicesPropType> = ({ services }) => {
 
   // Stable per-index callback refs so Card's memo() isn't defeated by a
   // freshly-created inline function on every Services re-render.
-  const cardRefCallbacks = useRef<Map<number, (el: HTMLDivElement | null) => void>>(
-    new Map()
-  );
+  const cardRefCallbacks = useRef<
+    Map<number, (el: HTMLDivElement | null) => void>
+  >(new Map());
 
   const getCardRef = useCallback((index: number) => {
     let cb = cardRefCallbacks.current.get(index);
@@ -65,7 +65,7 @@ const Services: React.FC<ServicesPropType> = ({ services }) => {
                 start: "top 85%",
                 toggleActions: "play pause resume reset",
               },
-            }
+            },
           );
         });
       } else {
@@ -94,14 +94,14 @@ const Services: React.FC<ServicesPropType> = ({ services }) => {
             duration: 0.8,
             ease: "power2.out",
           },
-          "-=0.4"
+          "-=0.4",
         );
 
         cardRefs.current.forEach((card) => {
           tl.fromTo(
             card,
             { opacity: 0, x: 100 },
-            { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }
+            { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
           );
         });
       }
@@ -111,7 +111,7 @@ const Services: React.FC<ServicesPropType> = ({ services }) => {
   }, [services, windowWidth]);
 
   return (
-    <section id="services">
+    <section id="services" className="bg_secondary">
       <div
         className={`container ${styles.service_section_container}`}
         ref={containerRef}
@@ -123,11 +123,7 @@ const Services: React.FC<ServicesPropType> = ({ services }) => {
 
         <div className={styles.service_card_container}>
           {services?.map((item, index) => (
-            <Card
-              key={item.id}
-              data={item}
-              setRef={getCardRef(index)}
-            />
+            <Card key={item.id} data={item} setRef={getCardRef(index)} />
           ))}
         </div>
       </div>

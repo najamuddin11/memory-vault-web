@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { themeMode } from "../../../models/state-types/ThemeModeType";
 import { useTheme } from "../../../context/ThemeContext";
 
-import Dropdown from "./Dropdown";
 import styles from "./navbar.module.css";
 
 import darkLogo from "/assets/logo/logoDark.svg";
@@ -18,27 +17,12 @@ import ellipseLight from "/assets/icons/ellipse-light.svg";
 
 import homeLight from "/assets/icons/home-light.svg";
 import homePurple from "/assets/icons/home-purple.svg";
-import aboutPurple from "/assets/icons/about-purple.svg";
-import aboutLight from "/assets/icons/about-light.svg";
 import portfolioLight from "/assets/icons/briefcase-light.svg";
 import portfolioPurple from "/assets/icons/briefcase-purple.svg";
-import contactLight from "/assets/icons/phone-call-light.svg";
-import contactPurple from "/assets/icons/phone-call-purple.svg";
-import downDark from "/assets/icons/chevron-down-light.svg";
-import downLight from "/assets/icons/chevron-down-dark.svg";
-import upDark from "/assets/icons/chevron-up-dark.svg";
-import upLight from "/assets/icons/chevron-up-light.svg";
 
 const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const dropdownItems = [
-    { id: 1, title: "Services", link: "#services" },
-    { id: 2, title: "Work Experience", link: "#work" },
-    { id: 3, title: "Education and Skills", link: "#education" },
-  ];
 
   const handleCursorEffect = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -59,61 +43,21 @@ const Navbar: React.FC = () => {
     <nav className={styles.navbar}>
       <div className={`container ${styles.nav}`}>
         {/* Brand */}
-        <a
-          href="/"
-          className={`${styles.nav_anchor} ${styles.brand}`}
-          onMouseOver={() => setDropdownOpen(false)}
-        >
+        <Link to="/" className={`${styles.nav_anchor} ${styles.brand}`}>
           <img src={isDark ? darkLogo : lightLogo} alt="Logo" />
-        </a>
-
-        {/* Desktop Nav Links */}
-        <div className={styles.nav_items_container}>
-          <a
-            href="/"
-            className={styles.nav_anchor}
-            onMouseOver={() => setDropdownOpen(false)}
-          >
-            Home
-          </a>
-
-          <div
-            className={styles.nav_dropdown}
-            onMouseOver={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-          >
-            <Link to="" className={styles.nav_anchor}>
-              About
-            </Link>
-            {dropdownOpen && (
-              <Dropdown
-                items={dropdownItems}
-                onClick={() => setDropdownOpen(false)}
-              />
-            )}
-          </div>
-
-          <a
-            href="#portfolio"
-            className={styles.nav_anchor}
-            onMouseOver={() => setDropdownOpen(false)}
-          >
-            Portfolio
-          </a>
-          <a
-            href="#contact"
-            className={styles.nav_anchor}
-            onMouseOver={() => setDropdownOpen(false)}
-          >
-            Contact
-          </a>
-        </div>
+        </Link>
 
         {/* Right side */}
-        <div
-          className={styles.last_nav}
-          onMouseOver={() => setDropdownOpen(false)}
-        >
+        <div className={styles.last_nav}>
+          <div style={{ position: "relative" }}>
+            <Link
+              to="/portfolios"
+              className={`${styles.nav_anchor} ${styles.nav_links}`}
+            >
+              Portfolio
+            </Link>
+          </div>
+
           <img
             src={isDark ? sun : moon}
             alt="theme toggle"
@@ -122,12 +66,12 @@ const Navbar: React.FC = () => {
           />
           <Link
             to={import.meta.env.VITE_FILES_PATH + "Najam_Uddin_Resume.pdf"}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <button
               onMouseMove={handleCursorEffect}
               className={styles.resume_btn}
-              onMouseOver={() => setDropdownOpen(false)}
             >
               Resume
             </button>
@@ -154,8 +98,8 @@ const Navbar: React.FC = () => {
                 </div>
               </div>
 
-              <a
-                href="/"
+              <Link
+                to="/"
                 className={styles.nav_anchor}
                 onClick={() => setMenuOpen(false)}
               >
@@ -165,44 +109,10 @@ const Navbar: React.FC = () => {
                   alt="Home"
                 />
                 Home
-              </a>
+              </Link>
 
-              {/* Mobile Dropdown */}
-              <div
-                className={styles.nav_dropdown}
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                <a href="#about" className={styles.nav_anchor}>
-                  <img
-                    className={styles.nav_link_icon}
-                    src={isDark ? aboutLight : aboutPurple}
-                    alt="About"
-                  />
-                  About
-                </a>
-                <img
-                  src={
-                    dropdownOpen
-                      ? isDark
-                        ? upLight
-                        : upDark
-                      : isDark
-                        ? downDark
-                        : downLight
-                  }
-                  alt="toggle"
-                />
-              </div>
-
-              {dropdownOpen && (
-                <Dropdown
-                  items={dropdownItems}
-                  onClick={() => setMenuOpen(false)}
-                />
-              )}
-
-              <a
-                href="#portfolio"
+              <Link
+                to="/portfolios"
                 className={styles.nav_anchor}
                 onClick={() => setMenuOpen(false)}
               >
@@ -212,20 +122,7 @@ const Navbar: React.FC = () => {
                   alt="Portfolio"
                 />
                 Portfolio
-              </a>
-
-              <a
-                href="#contact"
-                className={styles.nav_anchor}
-                onClick={() => setMenuOpen(false)}
-              >
-                <img
-                  className={styles.nav_link_icon}
-                  src={isDark ? contactLight : contactPurple}
-                  alt="Contact"
-                />
-                Contact
-              </a>
+              </Link>
 
               <div className={styles.splitter} />
 
@@ -257,6 +154,7 @@ const Navbar: React.FC = () => {
               <Link
                 to={import.meta.env.VITE_FILES_PATH + "Najam_Uddin_Resume.pdf"}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <button
                   style={{ marginTop: "40px" }}

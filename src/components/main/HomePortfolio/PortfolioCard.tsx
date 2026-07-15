@@ -1,6 +1,7 @@
 import styles from "./portfolioCard.module.css";
-import type PortfolioDataType from "../../../../models/state-types/PortfolioDataType";
-import Clip from "../../../general/Clip";
+import type PortfolioDataType from "../../../models/state-types/PortfolioDataType";
+import Clip from "../../general/Clip";
+import LazyImage from "../../general/LazyImage";
 import { memo } from "react";
 
 interface PortfolioCardPropType {
@@ -93,11 +94,12 @@ const PortfolioCard: React.FC<PortfolioCardPropType> = (props) => {
             <div className={styles.portfolio_card_gallery} data-pf-gallery>
               {data.carousel.map((item) => (
                 <div key={item.id}>
-                  <img
+                  <LazyImage
                     src={import.meta.env.VITE_FILES_PATH + item.img}
                     alt={item.title}
-                    loading="lazy"
-                    decoding="async"
+                    aspectRatio="2.35 / 1"
+                    className={styles.portfolio_card_gallery_thumb}
+                    imgClassName={styles.portfolio_card_gallery_img}
                   />
                 </div>
               ))}

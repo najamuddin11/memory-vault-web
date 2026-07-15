@@ -1,0 +1,138 @@
+.page_loader {
+  padding-top: 200px;
+  padding-bottom: 100px;
+}
+
+/* Same technique as LazyImage's skeleton (moving gradient sweep) so page
+   loads and image loads feel like the same product, not two different
+   loading languages. */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--bg-secondary);
+  width: 100%;
+  height: 100%;
+}
+.shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    var(--bg-secondary) 30%,
+    var(--bg-alternative) 50%,
+    var(--bg-secondary) 70%
+  );
+  background-size: 200% 100%;
+  animation: page_loader_shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes page_loader_shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Header */
+.header_block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 60px;
+}
+.header_block_primary {
+  min-height: 70vh;
+}
+.header_text_col {
+  width: 100%;
+  max-width: 560px;
+}
+.eyebrow_bar {
+  width: 120px;
+  height: 12px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+.title_bar {
+  width: min(420px, 100%);
+  height: 44px;
+  margin-bottom: 24px;
+}
+.desc_bar {
+  width: min(480px, 100%);
+  height: 16px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+.desc_bar_short {
+  width: min(320px, 70%);
+  height: 16px;
+  border-radius: 4px;
+}
+.header_image_col {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .header_image_col {
+    display: block;
+    width: min(75vw, 341px);
+    height: min(90vw, 398px);
+    flex-shrink: 0;
+  }
+}
+.header_image {
+  border-radius: 16px;
+}
+
+/* Pills */
+.pill_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.pill {
+  width: 70px;
+  height: 26px;
+  border-radius: 4px;
+}
+
+/* Text lines */
+.lines {
+  margin-bottom: 40px;
+}
+.line {
+  width: 100%;
+  height: 16px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+.line_short {
+  width: 60%;
+  height: 16px;
+  border-radius: 4px;
+}
+
+/* Card grid */
+.card_grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 767px) {
+  .page_loader {
+    padding-top: 120px;
+  }
+  .header_block_primary {
+    min-height: 0;
+  }
+  .title_bar {
+    height: 34px;
+  }
+}

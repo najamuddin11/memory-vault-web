@@ -10,8 +10,8 @@ import type { ContactSubmitPayload } from "../models/component-types/FormControl
 // expects numbers, so every id is normalized back to a number here, in
 // one place, right where the data enters the app.
 const toNumber = (value: unknown): number => Number(value);
-
-declare const grecaptcha: any;
+//TODO: add recaptcha
+// declare const grecaptcha: any;
 
 interface GraphQLHomeDataResponse {
   homeData: {
@@ -34,9 +34,6 @@ interface GraphQLHomeDataResponse {
 export const fetchHomeData = async (): Promise<HomeDataType> => {
   const { homeData } =
     await graphqlClient.request<GraphQLHomeDataResponse>(HOME_DATA_QUERY);
-
-  console.log(homeData);
-  console.log("GraphQL endpoint in use:", import.meta.env.VITE_GRAPHQL_URL);
 
   return {
     introData: homeData.introData.map((i) => ({

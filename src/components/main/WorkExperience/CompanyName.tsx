@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import styles from "./work-experience.module.css";
-import type WorkExperienceDataType from "../../../../models/state-types/WorkExperienceDataType";
+import type WorkExperienceDataType from "../../../models/state-types/WorkExperienceDataType";
 import CompanyDetails from "./CompanyDetails";
 
 interface CompanyNamePropType {

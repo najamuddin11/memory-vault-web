@@ -1,0 +1,48 @@
+.lazy_image_wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+}
+
+.lazy_image_wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    var(--bg-secondary) 30%,
+    var(--bg-alternative) 50%,
+    var(--bg-secondary) 70%
+  );
+  background-size: 200% 100%;
+  animation: lazy_image_shimmer 1.4s ease-in-out infinite;
+}
+
+.lazy_image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.lazy_image_loaded {
+  opacity: 1;
+}
+
+.lazy_image_loaded ~ .lazy_image_wrapper::before,
+.lazy_image_wrapper:has(.lazy_image_loaded)::before {
+  display: none;
+}
+
+@keyframes lazy_image_shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

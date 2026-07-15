@@ -1,8 +1,16 @@
 .loader {
-  /* border: 3px solid #f3f3f3; */
-  border-top: 3px solid #fff;
+  border: 3px solid var(--bg-alternative);
+  border-top-color: var(--side-theme-color);
   border-radius: 100%;
-  animation: spin 2s linear infinite;
+  animation: spin 0.8s linear infinite;
+}
+
+.loader_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 50px 0;
 }
 
 @keyframes spin {

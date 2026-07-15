@@ -1,0 +1,23 @@
+.portfolioList_card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+
+.portfolioList_card_thumb {
+  width: 100%;
+  height: 100%;
+}
+
+.portfolioList_card_img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Small extra polish: the image itself gets a gentle zoom on top of the
+   grid growing its cell, so the hovered project feels more "alive". */
+.portfolioList_card:hover .portfolioList_card_img {
+  transform: scale(1.05);
+}
