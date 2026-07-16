@@ -1,4 +1,4 @@
-import { memo, lazy, Suspense } from "react";
+import { memo, Suspense } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePortfolios } from "../hooks/usePortfolios";
