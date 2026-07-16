@@ -44,7 +44,12 @@ const Navbar: React.FC = () => {
       <div className={`container ${styles.nav}`}>
         {/* Brand */}
         <Link to="/" className={`${styles.nav_anchor} ${styles.brand}`}>
-          <img src={isDark ? darkLogo : lightLogo} alt="Logo" />
+          <img
+            src={isDark ? darkLogo : lightLogo}
+            alt="Logo"
+            width={101}
+            height={33}
+          />
         </Link>
 
         {/* Right side */}

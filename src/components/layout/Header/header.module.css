@@ -40,8 +40,7 @@
   width: min(75vw, 341px);
   height: min(90vw, 398px);
   border-radius: 16px;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
   background-color: var(--light-purple);
   transition: rotate(0deg);
   position: relative;

@@ -41,12 +41,20 @@ const Header: React.FC<HeaderPropType> = ({
         {!secondary ? (
           <div className={styles.header_rightCol}>
             <div className={styles.header_rightColImg_bg}></div>
-            <div
-              className={styles.header_rightColImg_wrapper}
-              style={{
-                backgroundImage: `url(${import.meta.env.VITE_FILES_PATH}${img})`,
-              }}
-            ></div>
+            {img && (
+              <img
+                className={styles.header_rightColImg_wrapper}
+                src={`${import.meta.env.VITE_FILES_PATH}${img}`}
+                alt={
+                  title
+                    ? `${title} ${titleHighlight ?? ""}`.trim()
+                    : "Profile photo"
+                }
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+              />
+            )}
           </div>
         ) : (
           ""

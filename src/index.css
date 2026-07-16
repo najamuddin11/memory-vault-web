@@ -32,52 +32,61 @@
 @font-face {
   font-family: "Plus Jakarta Sans";
   src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Regular.woff);
+  font-display: swap;
 }
 
 /* @font-face {
   font-family: "Plus Jakarta Sans";
   src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Medium.woff);
   font-weight: ;
+  font-display: swap;
 } */
 @font-face {
   font-family: "Plus Jakarta Sans";
   src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Bold.woff);
   font-weight: bold;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Plus Jakarta Sans";
   src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.woff);
   font-weight: bolder;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Plus Jakarta Sans";
   src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Light.woff);
   font-weight: lighter;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Inter";
   src: url(/assets/fonts/Inter/Inter-Regular.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Inter";
   src: url(/assets/fonts/Inter/Inter-Medium.ttf);
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Inter";
   src: url(/assets/fonts/Inter/Inter-ExtraBold.ttf);
   font-weight: bolder;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Inter";
   src: url(/assets/fonts/Inter/Inter-Thin.ttf);
   font-weight: lighter;
+  font-display: swap;
 }
 #tsparticles {
   position: absolute;

@@ -7,8 +7,7 @@ import PortfolioGridShimmer from "../components/main/PortfolioList/PortfolioGrid
 import ParticleLayout from "../components/layout/ParticleLayout";
 import PageLoader from "../components/general/PageLoader";
 import ErrorState from "../components/general/ErrorState";
-
-const Header = lazy(() => import("../components/layout/Header"));
+import Header from "../components/layout/Header";
 
 gsap.registerPlugin(ScrollTrigger);
 

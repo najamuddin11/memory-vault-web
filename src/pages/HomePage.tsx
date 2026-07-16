@@ -3,8 +3,8 @@ import { useHomeData } from "../hooks/useHomeData";
 import ParticleLayout from "../components/layout/ParticleLayout";
 import PageLoader, { ShimmerCardGrid } from "../components/general/PageLoader";
 import ErrorState from "../components/general/ErrorState";
+import Header from "../components/layout/Header";
 
-const Header = lazy(() => import("../components/layout/Header"));
 const Services = lazy(() => import("../components/main/Services"));
 const HomePortfolio = lazy(() => import("../components/main/HomePortfolio"));
 const WorkExperience = lazy(() => import("../components/main/WorkExperience"));

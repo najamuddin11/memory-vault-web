@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import styles from "./work-experience.module.css";
-import _ from "lodash";
 import CompanyName from "./CompanyName";
 import CompanyDetails from "./CompanyDetails";
 import useWindowSize from "../../../hooks/useWindowSize";
