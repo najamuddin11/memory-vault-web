@@ -1,4 +1,4 @@
-import { useRef, memo, lazy, Suspense } from "react";
+import { useRef, memo, Suspense } from "react";
 import { useHomeData } from "../hooks/useHomeData";
 import ParticleLayout from "../components/layout/ParticleLayout";
 import PageLoader, { ShimmerCardGrid } from "../components/general/PageLoader";

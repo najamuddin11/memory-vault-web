@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import "./App.css";
-import React, { useEffect, useRef, Suspense } from "react";
+import { useEffect, useRef, Suspense } from "react";
 import useScrollToTop from "./hooks/useScrollToTop";
 import { ReactLenis, type LenisRef } from "lenis/react";
 import Loader from "./components/general/Loader";
