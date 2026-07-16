@@ -8,12 +8,10 @@ import Loader from "./components/general/Loader";
 // ✅ Import and register GSAP plugin globally (only once)
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import MainLayout from "./components/layout/MainLayout";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 gsap.registerPlugin(ScrollTrigger);
-
-// Lazy-loaded layout components
-const MainLayout = React.lazy(() => import("./components/layout/MainLayout"));
-const Footer = React.lazy(() => import("./components/layout/Footer"));
-const Navbar = React.lazy(() => import("./components/layout/Navbar"));
 
 const App = () => {
   const lenisRef = useRef<LenisRef>(null);

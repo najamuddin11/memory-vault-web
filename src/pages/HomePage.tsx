@@ -4,21 +4,12 @@ import ParticleLayout from "../components/layout/ParticleLayout";
 import PageLoader, { ShimmerCardGrid } from "../components/general/PageLoader";
 import ErrorState from "../components/general/ErrorState";
 import Header from "../components/layout/Header";
+import Services from "../components/main/Services";
+import HomePortfolio from "../components/main/HomePortfolio";
+import WorkExperience from "../components/main/WorkExperience";
+import Education from "../components/main/Education";
+import Contact from "../components/main/Contact";
 
-const Services = lazy(() => import("../components/main/Services"));
-const HomePortfolio = lazy(() => import("../components/main/HomePortfolio"));
-const WorkExperience = lazy(() => import("../components/main/WorkExperience"));
-const Education = lazy(() => import("../components/main/Education"));
-const Contact = lazy(() => import("../components/main/Contact"));
-
-/**
- * Generic homepage content shimmer: this page is a stack of distinct
- * sections (services, portfolio, experience, education), not one uniform
- * shape - so rather than hand-modeling each section, it's a rhythm of the
- * same ShimmerCardGrid primitive at different densities. Good enough to
- * hold the page's weight/scroll-height without a jump, without coupling
- * the loader to every section's real layout.
- */
 const HomeLoadingContent = () => (
   <>
     <ShimmerCardGrid count={3} minWidth="260px" aspectRatio="1 / 1" />

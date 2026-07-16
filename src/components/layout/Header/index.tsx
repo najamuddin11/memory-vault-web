@@ -50,6 +50,8 @@ const Header: React.FC<HeaderPropType> = ({
                     ? `${title} ${titleHighlight ?? ""}`.trim()
                     : "Profile photo"
                 }
+                width={341}
+                height={398}
                 fetchPriority="high"
                 loading="eager"
                 decoding="async"

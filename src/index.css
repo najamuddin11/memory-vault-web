@@ -28,43 +28,39 @@
   --cursor-size: 5px;
   --cursor-outline-size: 40px;
 }
-
 @font-face {
   font-family: "Plus Jakarta Sans";
-  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Regular.woff);
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Regular.woff2)
+    format("woff2");
+  font-weight: 400;
   font-display: swap;
 }
-
-/* @font-face {
-  font-family: "Plus Jakarta Sans";
-  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Medium.woff);
-  font-weight: ;
-  font-display: swap;
-} */
 @font-face {
   font-family: "Plus Jakarta Sans";
-  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Bold.woff);
-  font-weight: bold;
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Medium.woff2)
+    format("woff2");
+  font-weight: 500;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Plus Jakarta Sans";
-  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.woff);
-  font-weight: bolder;
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Bold.woff2)
+    format("woff2");
+  font-weight: 700;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Plus Jakarta Sans";
-  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Light.woff);
-  font-weight: lighter;
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.woff2)
+    format("woff2");
+  font-weight: 800;
   font-display: swap;
 }
-
 @font-face {
-  font-family: "Inter";
-  src: url(/assets/fonts/Inter/Inter-Regular.ttf);
+  font-family: "Plus Jakarta Sans";
+  src: url(/assets/fonts/PlusJakartaSans/PlusJakartaSans-Light.woff2)
+    format("woff2");
+  font-weight: 300;
   font-display: swap;
 }
 
@@ -72,20 +68,6 @@
   font-family: "Inter";
   src: url(/assets/fonts/Inter/Inter-Medium.ttf);
   font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url(/assets/fonts/Inter/Inter-ExtraBold.ttf);
-  font-weight: bolder;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url(/assets/fonts/Inter/Inter-Thin.ttf);
-  font-weight: lighter;
   font-display: swap;
 }
 #tsparticles {
