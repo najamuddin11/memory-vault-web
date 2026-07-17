@@ -1,70 +1,160 @@
-# React + TypeScript + Vite
+# Portfolio v3
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fast, animated developer portfolio built with React, TypeScript, and Vite — hero intro, services, project showcase, work experience timeline, education/skills, and a contact form, backed by a GraphQL API.
 
-Currently, two official plugins are available:
+Use it as a template for your own portfolio, or borrow individual pieces (the particle background, GSAP scroll animations, GraphQL data layer, etc.) for another project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
 
-## Expanding the ESLint configuration
+- **React 19** + **TypeScript** + **Vite**
+- **React Router v7** for routing (`/`, `/portfolios`, `/portfolios/:id`)
+- **TanStack Query (React Query)** for data fetching/caching
+- **graphql-request** for talking to the backend
+- **GSAP** (+ ScrollTrigger) for scroll animations
+- **tsParticles** for the animated background
+- **Lenis** for smooth scrolling
+- **Swiper** for carousels
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Prerequisites
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 20+
+- A GraphQL backend that implements the schema this app expects (see [Backend requirements](#backend-requirements) below) — this repo is the frontend only.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Getting started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone <this-repo-url>
+cd portfolio-v3
+npm install
+cp .env   # then fill in the values, see below
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Other scripts:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command           | What it does                                   |
+| ----------------- | ---------------------------------------------- |
+| `npm run dev`     | Start the Vite dev server                      |
+| `npm run build`   | Type-check (`tsc -b`) and build for production |
+| `npm run preview` | Preview the production build locally           |
+| `npm run lint`    | Run ESLint                                     |
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Environment variables
+
+Copy `.env.example` to `.env` and set:
+
+| Variable                  | Required | Description                                                                                                                                                               |
+| ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VITE_GRAPHQL_URL`        | Yes      | Full URL to your GraphQL endpoint, e.g. `https://your-backend.example.com/graphql`                                                                                        |
+| `VITE_FILES_PATH`         | Yes      | Base URL images/resume are served from (e.g. an R2/S3 bucket, `https://pub-xxxx.r2.dev/`). All `img`/icon fields returned by the API are relative paths appended to this. |
+| `VITE_RECAPTCHA_SITE_KEY` | No       | Not wired up yet (see `src/api/homeApi.ts`) — reserved for future reCAPTCHA support on the contact form.                                                                  |
+
+## Backend requirements
+
+This frontend expects a GraphQL API exposing a single `homeData` query and a `sendMessage` mutation. The full shape it queries for is in [`src/graphql/queries.ts`](./src/graphql/queries.ts); the top-level fields are:
+
+```graphql
+query HomeData {
+  homeData {
+    introData {
+      id
+      img
+      firstName
+      lastName
+      resume
+      summary
+    }
+    serviceData {
+      id
+      iconLight
+      iconDark
+      title
+      details
+    }
+    portfolioData {
+      id
+      featured
+      title
+      companyBuiltWith
+      desc
+      projectColor
+      projectText
+      outcome
+      link
+      moreInfoLink
+      projectLogo
+      image
+      status
+      skills
+      carousel {
+        id
+        img
+        desc
+        title
+        gridArea
+      }
+    }
+    workExperienceData {
+      id
+      duration
+      designation
+      company
+      location
+      icon
+      companyDescription
+      whatIdid {
+        title
+        desc
+      }
+      skillsUsed
+      achievement
+      companySite
+    }
+    testimonialsData {
+      id
+      profile
+      name
+      designation
+      description
+    }
+    educationData {
+      id
+      city
+      duration
+      academy
+      degree
+    }
+    skillsData {
+      id
+      title
+      level
+      progress
+    }
+    contactData {
+      id
+      text
+      iconLight
+      iconDark
+      link
+    }
+  }
+}
 ```
-# portfolio-v3
+
+The contact form also expects:
+
+- `GET {API_BASE_URL}/csrf-token` — returns `{ csrfToken: string }`, used to protect the mutation below.
+- `mutation sendMessage(input: ContactSubmitPayload!)` — submits the contact form (see `src/models/component-types/FormControlType.ts` for the payload shape).
+
+`API_BASE_URL` is derived automatically in `src/api/client.ts` by stripping `/graphql` off the end of `VITE_GRAPHQL_URL`.
+
+No backend handy? Point `VITE_GRAPHQL_URL` at any GraphQL server that satisfies this schema, or stub it with a tool like [GraphQL Faker](https://github.com/graphql-kit/graphql-faker)/[MSW](https://mswjs.io/) while you build your own.
+
+## Making it yours
+
+- **Hero fallback**: `src/pages/HomePage.tsx` renders the hero (name + photo) from a small hardcoded `HERO_FALLBACK` object before/independent of the API response, for performance reasons (it's the page's LCP element and shouldn't wait on a network round-trip). Update `HERO_FALLBACK` with your own name and photo path.
+- **Fonts**: self-hosted under `public/assets/fonts/`, declared in `src/index.css`, preloaded in `index.html`. Swap the files and update both places if you change fonts.
+- **Resume**: currently linked as `${VITE_FILES_PATH}Najam_Uddin_Resume.pdf` in `src/components/layout/Navbar/index.tsx` — update the filename.
+- **Content** (services, projects, experience, education, skills, testimonials): comes entirely from your GraphQL backend via the `homeData` query — no need to touch frontend code to update it.
+
+## Project structure
