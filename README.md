@@ -152,8 +152,6 @@ No backend handy? Point `VITE_GRAPHQL_URL` at any GraphQL server that satisfies 
 
 ## Making it yours
 
-- **Hero fallback**: `src/pages/HomePage.tsx` renders the hero (name + photo) from a small hardcoded `HERO_FALLBACK` object before/independent of the API response, for performance reasons (it's the page's LCP element and shouldn't wait on a network round-trip). Update `HERO_FALLBACK` with your own name and photo path.
-- **Fonts**: self-hosted under `public/assets/fonts/`, declared in `src/index.css`, preloaded in `index.html`. Swap the files and update both places if you change fonts.
 - **Resume**: currently linked as `${VITE_FILES_PATH}Najam_Uddin_Resume.pdf` in `src/components/layout/Navbar/index.tsx` — update the filename.
 - **Content** (services, projects, experience, education, skills, testimonials): comes entirely from your GraphQL backend via the `homeData` query — no need to touch frontend code to update it.
 
