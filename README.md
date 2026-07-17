@@ -26,7 +26,7 @@ Use it as a template for your own portfolio, or borrow individual pieces (the pa
 git clone <this-repo-url>
 cd portfolio-v3
 npm install
-cp .env   # then fill in the values, see below
+# create a .env file with the variables listed below, then:
 npm run dev
 ```
 
@@ -41,7 +41,7 @@ Other scripts:
 
 ## Environment variables
 
-Copy `.env.example` to `.env` and set:
+Create a `.env` file in the project root and set:
 
 | Variable                  | Required | Description                                                                                                                                                               |
 | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
