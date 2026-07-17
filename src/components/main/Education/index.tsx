@@ -160,12 +160,8 @@ const Education: React.FC<EducationPropType> = (props) => {
     return () => ctx.revert();
   }, [education, windowWidth]);
   return (
-    <section
-      id="education"
-      ref={containerRef}
-      className="bg_secondary_gradient_effect"
-    >
-      <div className="container">
+    <section id="education" className="bg_secondary_gradient_effect">
+      <div className="container" ref={containerRef}>
         <h5 data-edu-heading1>learning path</h5>
         <h2 data-edu-heading2>Education & Skills</h2>
         <div className={`${styles.education_row}`}>
