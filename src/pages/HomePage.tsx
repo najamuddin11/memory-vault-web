@@ -55,10 +55,10 @@ const Home = () => {
         <ParticleLayout fixed>
           <Header
             eyebrow="MY NAME IS"
-            title={homeData.introData[0].firstName}
-            titleHighlight={homeData.introData[0].lastName}
-            img={homeData.introData[0].img}
-            description={homeData.introData[0].summary}
+            title={homeData.introData[0].firstName ?? ""}
+            titleHighlight={homeData.introData[0].lastName ?? ""}
+            img={homeData.introData[0].img ?? ""}
+            description={homeData.introData[0].summary ?? ""}
           />
 
           <Services services={homeData.serviceData} />
