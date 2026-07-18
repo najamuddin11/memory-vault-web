@@ -16,6 +16,7 @@
 .skills_clip_container {
   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
 }
 .portfolio_card_gallery {
   position: relative;

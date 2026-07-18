@@ -58,6 +58,7 @@
 .skills_container {
   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
 .body_links {

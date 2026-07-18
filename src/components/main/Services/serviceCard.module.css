@@ -14,11 +14,15 @@
   text-align: center;
 }
 .service_card_title {
-  font-weight: 500;
+  font-family: Plus Jakarta Sans;
+  margin-top: 30px;
+  font-weight: bolder;
 }
 .service_card_detail {
+  font-family: Plus Jakarta Sans;
+  margin-top: 18px;
   line-height: 24px;
-  font-weight: 400;
+  font-size: 14px;
 }
 @media screen and (max-width: 1279px) {
   .service_card {

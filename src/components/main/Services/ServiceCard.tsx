@@ -19,7 +19,7 @@ const Card: React.FC<ServiceCardPropType> = ({ data, setRef }) => {
         text={`${data.title} icon`}
         center={true}
       />
-      <h4 className={styles.service_card_title}>{data.title}</h4>
+      <div className={styles.service_card_title}>{data.title}</div>
       <div className={styles.service_card_detail}>{data.details}</div>
     </div>
   );
