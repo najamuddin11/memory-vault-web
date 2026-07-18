@@ -81,4 +81,7 @@
     padding-top: 20vw;
     gap: 25px;
   }
+  .header_container.header {
+    grid-template-columns: 1fr;
+  }
 }
