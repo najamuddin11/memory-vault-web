@@ -15,8 +15,8 @@ const Cursor = () => {
 
   /** Mouse Handlers */
   const onMouseMove = (event: MouseEvent) => {
-    endX.current = event.pageX;
-    endY.current = event.pageY;
+    endX.current = event.clientX;
+    endY.current = event.clientY;
 
     const dot = cursorDot.current;
     if (dot) {

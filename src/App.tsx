@@ -3,7 +3,7 @@ import "./App.css";
 import { useEffect, useRef, Suspense } from "react";
 import useScrollToTop from "./hooks/useScrollToTop";
 import { ReactLenis, type LenisRef } from "lenis/react";
-import Loader from "./components/general/Loader";
+import PageLoader from "./components/general/PageLoader";
 
 // ✅ Import and register GSAP plugin globally (only once)
 import { gsap } from "gsap";
@@ -34,10 +34,9 @@ const App = () => {
 
   return (
     <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
-      {/* App-shell chunks (Navbar/MainLayout/Footer) loading - brief, so a
-          spinner is right here; each page's own Suspense (see PageLoader)
-          handles the shimmer for its actual content. */}
-      <Suspense fallback={<Loader center />}>
+      {/* App-shell chunks (Navbar/MainLayout/Footer) loading - uses the
+          same shimmer language as each page's own Suspense fallback. */}
+      <Suspense fallback={<PageLoader />}>
         <MainLayout>
           <Navbar />
           <Outlet />
