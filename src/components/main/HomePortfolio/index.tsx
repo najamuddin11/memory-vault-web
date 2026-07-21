@@ -275,15 +275,13 @@ const HomePortfolio: React.FC<PortfolioPropType> = (props) => {
         </div>
 
         <div className={styles.portfolio_cards_container}>
-          {portfolio
-            ?.filter((item) => item.featured)
-            .map((item, index) => (
-              <PortfolioCard
-                key={item.id}
-                data={item}
-                setRef={getCardRef(index)}
-              />
-            ))}
+          {portfolio?.map((item, index) => (
+            <PortfolioCard
+              key={item.id}
+              data={item}
+              setRef={getCardRef(index)}
+            />
+          ))}
         </div>
       </div>
     </section>
