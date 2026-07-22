@@ -1,4 +1,4 @@
-import { memo, useRef, useState, useLayoutEffect } from "react";
+import { memo, useEffect, useRef, useState, useLayoutEffect } from "react";
 import styles from "./lazyImage.module.css";
 
 interface LazyImagePropType {
@@ -51,7 +51,37 @@ const LazyImage: React.FC<LazyImagePropType> = (props) => {
   } = props;
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
+  // Non-priority images start unmounted (no src) until IntersectionObserver
+  // says we're near the viewport - priority images render immediately.
+  const [shouldLoad, setShouldLoad] = useState(priority);
   const imgRef = useRef<HTMLImageElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Safari has a real bug where the native `loading="lazy"` attribute can
+  // simply never trigger a fetch for images that sit inside a transformed
+  // ancestor (e.g. page-transition animations) - the image is then stuck
+  // in the shimmer state forever, even though nothing is technically
+  // "wrong". Driving lazy-loading ourselves via IntersectionObserver
+  // avoids depending on that inconsistent browser heuristic entirely.
+  useEffect(() => {
+    if (priority || shouldLoad) return;
+    const node = wrapperRef.current;
+    if (!node || typeof IntersectionObserver === "undefined") {
+      setShouldLoad(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [priority, shouldLoad]);
 
   // If the browser already has this image cached, `img.complete` can be
   // true before React attaches the onLoad listener below - in that case
@@ -64,25 +94,27 @@ const LazyImage: React.FC<LazyImagePropType> = (props) => {
     if (img && img.complete && img.naturalWidth > 0) {
       setLoaded(true);
     }
-  }, [src]);
+  }, [src, shouldLoad]);
 
   return (
     <div
+      ref={wrapperRef}
       className={`${styles.lazy_image_wrapper} ${className ?? ""}`}
       style={{ ...(aspectRatio ? { aspectRatio } : {}), ...style }}
     >
-      <img
-        ref={imgRef}
-        src={src}
-        alt={alt}
-        loading={priority ? "eager" : "lazy"}
-        decoding="async"
-        fetchPriority={priority ? "high" : "auto"}
-        onLoad={() => setLoaded(true)}
-        onError={() => setErrored(true)}
-        style={{ objectFit }}
-        className={`${styles.lazy_image} ${loaded ? styles.lazy_image_loaded : ""} ${imgClassName ?? ""}`}
-      />
+      {shouldLoad && (
+        <img
+          ref={imgRef}
+          src={src}
+          alt={alt}
+          decoding="async"
+          fetchPriority={priority ? "high" : "auto"}
+          onLoad={() => setLoaded(true)}
+          onError={() => setErrored(true)}
+          style={{ objectFit }}
+          className={`${styles.lazy_image} ${loaded ? styles.lazy_image_loaded : ""} ${imgClassName ?? ""}`}
+        />
+      )}
       {errored && (
         <div className={styles.lazy_image_error}>Image unavailable</div>
       )}
