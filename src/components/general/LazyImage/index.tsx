@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useRef, useState, useLayoutEffect } from "react";
 import styles from "./lazyImage.module.css";
 
 interface LazyImagePropType {
@@ -50,6 +50,21 @@ const LazyImage: React.FC<LazyImagePropType> = (props) => {
     style,
   } = props;
   const [loaded, setLoaded] = useState(false);
+  const [errored, setErrored] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // If the browser already has this image cached, `img.complete` can be
+  // true before React attaches the onLoad listener below - in that case
+  // "load" never fires and the shimmer would stay stuck forever. Checking
+  // .complete on mount (and whenever src changes) covers that case.
+  useLayoutEffect(() => {
+    setLoaded(false);
+    setErrored(false);
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, [src]);
 
   return (
     <div
@@ -57,15 +72,20 @@ const LazyImage: React.FC<LazyImagePropType> = (props) => {
       style={{ ...(aspectRatio ? { aspectRatio } : {}), ...style }}
     >
       <img
+        ref={imgRef}
         src={src}
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         fetchPriority={priority ? "high" : "auto"}
         onLoad={() => setLoaded(true)}
+        onError={() => setErrored(true)}
         style={{ objectFit }}
         className={`${styles.lazy_image} ${loaded ? styles.lazy_image_loaded : ""} ${imgClassName ?? ""}`}
       />
+      {errored && (
+        <div className={styles.lazy_image_error}>Image unavailable</div>
+      )}
     </div>
   );
 };

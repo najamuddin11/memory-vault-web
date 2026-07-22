@@ -34,8 +34,21 @@
 }
 
 .lazy_image_loaded ~ .lazy_image_wrapper::before,
-.lazy_image_wrapper:has(.lazy_image_loaded)::before {
+.lazy_image_wrapper:has(.lazy_image_loaded)::before,
+.lazy_image_wrapper:has(.lazy_image_error)::before {
   display: none;
+}
+
+.lazy_image_error {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #888);
+  font-size: 0.85rem;
+  background-color: var(--bg-secondary);
 }
 
 @keyframes lazy_image_shimmer {
